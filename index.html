@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberShield | Security Operations Center</title>
+<style>
+:root{--bg:#080d18;--sidebar:#0b1220;--surface:#101a2b;--surface2:#131f32;--surface3:#182740;--line:#26364e;--text:#edf3fc;--muted:#8fa2bd;--cyan:#54e0e7;--blue:#6b9cff;--red:#ff7084;--amber:#ffc46e;--green:#5de2ad;--shadow:0 18px 45px #0002}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer;transition:.18s ease}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.app{min-height:100vh;display:grid;grid-template-columns:248px minmax(0,1fr)}.sidebar{background:linear-gradient(180deg,#0c1526,#09101c);border-right:1px solid #1e2b40;padding:23px 15px;display:flex;flex-direction:column;gap:30px}.brand{display:flex;align-items:center;gap:11px;padding:0 9px}.brandmark{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--cyan),#6a91ff);display:grid;place-items:center;color:#06101e;font-weight:950;font-size:22px;box-shadow:0 6px 22px #54e0e722}.brandname{font-size:17px;font-weight:800;letter-spacing:.2px}.brandtag{font-size:9px;color:#8fa7c4;letter-spacing:1.15px;font-weight:700}.navgroup{display:grid;gap:6px}.navlabel{color:#627895;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:0 12px 7px}.navitem{display:flex;align-items:center;gap:12px;color:#91a5bf;padding:11px 12px;border-radius:10px;text-decoration:none;font-size:13px;border:1px solid transparent}.navitem .ico{width:19px;text-align:center;font-size:15px}.navitem.active{background:linear-gradient(90deg,#19314a,#14253a);color:#e9fbff;border-color:#294c66;box-shadow:inset 3px 0 var(--cyan)}.navitem:hover{background:#14243a;color:#fff}.sidebottom{margin-top:auto}.healthbox{padding:13px;border:1px solid #253a50;background:#101e30;border-radius:13px}.healthtitle{font-size:11px;color:#9cb0c8;display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #5de2ad18}.healthvalue{font-size:13px;font-weight:750;margin-top:8px}.healthfoot{font-size:10px;color:#7288a4;margin-top:3px}
+main{min-width:0}.topbar{height:76px;border-bottom:1px solid #1c2a3e;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,3vw,42px);gap:20px;background:#0a111eaa;position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)}.crumb{color:var(--muted);font-size:12px}.crumb strong{color:#eaf3ff;font-weight:650}.topright{display:flex;align-items:center;gap:12px}.env{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid #285044;background:#10291f;color:#83efbc;border-radius:99px;font-size:11px;font-weight:750}.avatar{width:34px;height:34px;border-radius:11px;background:#1a2c44;border:1px solid #304764;display:grid;place-items:center;font-weight:800;color:#c9e4ff}.content{max-width:1600px;margin:auto;padding:30px clamp(18px,3vw,42px) 40px}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:24px}.eyebrow{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--cyan);font-weight:800}.pagehead h1{font-size:clamp(25px,2.6vw,34px);line-height:1.2;letter-spacing:-.8px;margin:7px 0 8px}.pagehead p{margin:0;color:var(--muted);max-width:650px}.headactions{display:flex;gap:9px;flex-wrap:wrap}.btn{border-radius:9px;padding:10px 14px;border:1px solid #334863;background:#15243a;color:#dce9fa;font-weight:700;font-size:12px}.btn:hover{transform:translateY(-1px);border-color:#57718f}.btn.primary{background:linear-gradient(135deg,#5ce2e7,#76b4ff);color:#071522;border:0;box-shadow:0 7px 20px #54e0e71b}.btn:disabled{opacity:.5;cursor:wait;transform:none}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:17px}.metric{padding:17px 18px;background:linear-gradient(145deg,#121f32,#0e1727);border:1px solid #24354c;border-radius:14px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.metric:after{content:"";position:absolute;right:-24px;top:-35px;width:90px;height:90px;border-radius:50%;background:var(--glow,#54e0e7);opacity:.07;filter:blur(2px)}.metrichead{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#9aadc6;font-size:11px}.metricicon{width:29px;height:29px;border-radius:9px;display:grid;place-items:center;background:#1c3048;color:var(--accent,var(--cyan));font-size:14px}.metricvalue{font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.7px;margin:13px 0 5px}.metricfoot{color:#7186a1;font-size:10px}.metricfoot strong{color:var(--green);font-weight:700}.dashboardgrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.85fr);gap:16px}.panel{background:linear-gradient(145deg,#111c2e,#0e1726);border:1px solid #24354c;border-radius:15px;box-shadow:var(--shadow);min-width:0}.panelhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 19px 0}.paneltitle{font-weight:750;font-size:14px;letter-spacing:.1px}.panelsub{font-size:11px;color:var(--muted);margin-top:4px}.mini-tag{font-size:10px;border-radius:7px;padding:5px 8px;background:#172b40;border:1px solid #2b435d;color:#a9c6e8;white-space:nowrap}.chartwrap{padding:14px 18px 17px}.chartlegend{display:flex;gap:15px;color:#8ea4c0;font-size:10px;margin:0 0 8px}.legenddot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:var(--cyan)}.legenddot.fail{background:var(--red)}canvas{width:100%;height:160px;display:block}.chartnote{font-size:10px;color:#647b99;margin-top:5px}.rulelist{padding:14px 15px 16px;display:grid;gap:9px}.rule{display:flex;gap:11px;padding:12px;border:1px solid #253951;background:#101b2c;border-radius:11px}.ruleicon{width:31px;height:31px;flex:0 0 31px;display:grid;place-items:center;border-radius:9px;background:#3d202e;color:#ff91a1}.ruleicon.med{background:#3a2d1c;color:#ffd18b}.ruleicon.neutral{background:#1a3044;color:#86dff0}.ruletitle{font-size:12px;font-weight:750}.ruledesc{font-size:10px;line-height:1.45;color:#8da2bd;margin-top:3px}.rulemeta{font-size:9px;color:#637d9b;margin-top:6px;letter-spacing:.2px}.workgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:16px;margin-top:16px}.formbody{padding:15px 19px 19px}.fieldlabel{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#a6b8cf;font-size:11px;font-weight:650;margin:12px 0 6px}.fieldlabel:first-child{margin-top:0}.fieldlabel small{font-size:10px;color:#6e86a3;font-weight:500}input,textarea{width:100%;background:#091321;color:#eaf3ff;border:1px solid #2a3e58;border-radius:9px;padding:11px 12px;outline:none}input{height:41px;font-size:12px}textarea{min-height:205px;resize:vertical;font:11px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}input:focus,textarea:focus{border-color:#4e9eaf;box-shadow:0 0 0 3px #54e0e710}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{display:flex;align-items:flex-start;gap:9px;padding:11px 12px;margin-top:12px;border:1px solid #293d55;background:#0c1726;border-radius:9px;color:#93a9c4;font-size:11px;white-space:pre-wrap}.status .statusdot{margin-top:5px;width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#7e96b2}.status.ok{border-color:#285344;color:#9ceac5}.status.ok .statusdot{background:var(--green)}.status.error{border-color:#603142;color:#ffabb6}.status.error .statusdot{background:var(--red)}.ruleshint{padding:14px 16px 17px}.ruleline{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #203149}.ruleline:last-child{border-bottom:0}.ruleline strong{font-size:11px}.ruleline span{font-size:10px;color:#91a7c1;text-align:right;max-width:58%}.privacy{margin-top:13px;padding:11px 12px;border:1px solid #244d45;background:#10251f;border-radius:10px;color:#9edfc7;font-size:10px;display:flex;gap:9px}.results{margin-top:16px}.resulttools{display:flex;align-items:center;gap:8px}.count{font-size:10px;border:1px solid #2b5361;background:#102b35;color:#7fe5ee;border-radius:99px;padding:5px 9px}.tablewrap{overflow:auto;padding:12px 18px 18px}table{border-collapse:collapse;width:100%;min-width:680px;font-size:11px}th{text-transform:uppercase;letter-spacing:.8px;font-size:9px;color:#7189a6;text-align:left;font-weight:800;padding:11px 10px;border-bottom:1px solid #2a3c54}td{padding:13px 10px;border-bottom:1px solid #202f45;color:#c9d7e9;vertical-align:top;overflow-wrap:anywhere}tbody tr:hover{background:#15243a66}tbody tr:last-child td{border-bottom:0}.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border-radius:6px;font-size:9px;font-weight:850;letter-spacing:.3px}.badge.HIGH{background:#48232f;color:#ff9cab}.badge.MEDIUM{background:#46351f;color:#ffd28b}.badge.LOW{background:#173b32;color:#88e7bd}.empty{text-align:center!important;color:#6f85a0!important;padding:28px!important}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px;color:#5f7591;font-size:10px}.footer strong{color:#8ea4be;font-weight:650}.mobilemenu{display:none}
+@media(max-width:1120px){.app{grid-template-columns:210px minmax(0,1fr)}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboardgrid{grid-template-columns:1fr}.rulelist{grid-template-columns:repeat(3,minmax(0,1fr))}.rule{align-items:flex-start}.workgrid{grid-template-columns:1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.topbar{height:64px;padding:0 16px}.content{padding:22px 14px 30px}.pagehead{display:block}.headactions{margin-top:16px}.metrics{gap:9px}.metric{padding:13px}.metricvalue{font-size:25px}.metrichead{font-size:10px}.metricicon{display:none}.rulelist{grid-template-columns:1fr}.panelhead{padding:15px 14px 0}.formbody{padding:14px}.tablewrap{padding:8px 10px 12px}.env{font-size:9px}.topright{gap:7px}.crumb{font-size:10px}.footer{display:block}.footer span{display:block;margin-top:5px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">C</div><div><div class="brandname">CyberShield</div><div class="brandtag">SECURITY CLOUD</div></div></div>
+  <nav class="navgroup" aria-label="Main navigation"><div class="navlabel">WORKSPACE</div><a class="navitem active" href="#overview"><span class="ico">▦</span>Overview</a><a class="navitem" href="#analysis"><span class="ico">⌁</span>Log analysis</a><a class="navitem" href="#findings"><span class="ico">◈</span>Findings</a><a class="navitem" href="#detection"><span class="ico">⛨</span>Detection rules</a></nav>
+  <nav class="navgroup" aria-label="System"><div class="navlabel">SYSTEM</div><a class="navitem" href="#architecture"><span class="ico">☁</span>Cloud architecture</a><a class="navitem" href="#footer"><span class="ico">ⓘ</span>About this prototype</a></nav>
+  <div class="sidebottom"><div class="healthbox"><div class="healthtitle"><span class="dot"></span> Cloud integration</div><div class="healthvalue">Ready for analysis</div><div class="healthfoot">API endpoint configured in workspace</div></div></div>
+</aside>
+<main>
+<header class="topbar"><div class="crumb">Workspace <span style="color:#526a88">/</span> <strong>Security operations</strong></div><div class="topright"><span class="env"><span class="dot"></span> DEMO ENVIRONMENT</span><div class="avatar">CS</div></div></header>
+<div class="content" id="overview">
+  <section class="pagehead"><div><div class="eyebrow">Security intelligence · Workspace</div><h1>Security Operations Center</h1><p>Analyze authentication activity, surface suspicious patterns, and review rule-based findings from a single workspace.</p></div><div class="headactions"><button class="btn" id="resetView">↻ Reset view</button><button class="btn primary" id="loadDemoTop">＋ Load demo data</button></div></section>
+  <section class="metrics" aria-label="Current batch metrics">
+    <div class="metric" style="--accent:var(--cyan);--glow:var(--cyan)"><div class="metrichead">Events analyzed <span class="metricicon">⌁</span></div><div class="metricvalue" id="total">—</div><div class="metricfoot">Events in latest batch</div></div>
+    <div class="metric" style="--accent:var(--red);--glow:var(--red)"><div class="metrichead">Security findings <span class="metricicon">◈</span></div><div class="metricvalue" id="suspicious">—</div><div class="metricfoot">Matched configured rules</div></div>
+    <div class="metric" style="--accent:var(--amber);--glow:var(--amber)"><div class="metrichead">High severity <span class="metricicon">⚑</span></div><div class="metricvalue" id="high">—</div><div class="metricfoot">Prioritized for review</div></div>
+    <div class="metric" style="--accent:var(--green);--glow:var(--green)"><div class="metrichead">Unique source IPs <span class="metricicon">◎</span></div><div class="metricvalue" id="ips">—</div><div class="metricfoot">Distinct IPs in submitted batch</div></div>
+  </section>
+  <section class="dashboardgrid">
+    <div class="panel"><div class="panelhead"><div><div class="paneltitle">Authentication activity</div><div class="panelsub">Event mix from the latest submitted batch</div></div><span class="mini-tag" id="activityTag">Waiting for data</span></div><div class="chartwrap"><div class="chartlegend"><span><i class="legenddot"></i>Successful logins</span><span><i class="legenddot fail"></i>Failed logins</span></div><canvas id="activityChart" aria-label="Authentication event chart"></canvas><div class="chartnote">Visualization is derived from the submitted event batch; it is not a live AWS monitoring feed.</div></div></div>
+    <div class="panel" id="detection"><div class="panelhead"><div><div class="paneltitle">Detection rules</div><div class="panelsub">Explainable signals used by this prototype</div></div><span class="mini-tag">3 controls</span></div><div class="rulelist">
+      <div class="rule"><div class="ruleicon">⚑</div><div><div class="ruletitle">Repeated login failures</div><div class="ruledesc">Five or more failed logins from one IP in a submitted batch.</div><div class="rulemeta">AUTH-001 · HIGH SEVERITY</div></div></div>
+      <div class="rule"><div class="ruleicon med">↗</div><div><div class="ruletitle">Successful login after failures</div><div class="ruledesc">Successful login observed after repeated failures from the same IP.</div><div class="rulemeta">AUTH-002 · MEDIUM SEVERITY</div></div></div>
+      <div class="rule"><div class="ruleicon neutral">◇</div><div><div class="ruletitle">Data minimization</div><div class="ruledesc">Store detected findings only; avoid passwords, tokens, and personal data.</div><div class="rulemeta">PRIVACY CONTROL</div></div></div>
+    </div></div>
+  </section>
+  <section class="workgrid" id="analysis">
+    <div class="panel"><div class="panelhead"><div><div class="paneltitle">Analyze security logs</div><div class="panelsub">Analyze synthetic authentication events locally in your browser.</div></div><span class="mini-tag">LOCAL DEMO</span></div><div class="formbody">
+      <label class="fieldlabel" for="logs">Authentication events <small>JSON array</small></label><textarea id="logs" spellcheck="false" aria-label="JSON authentication events" placeholder='[ { "timestamp": "2026-10-24T10:00:00Z", "ip": "198.51.100.20", "event": "login_failed" } ]'></textarea>
+      <div class="actions"><button class="btn primary" id="analyze">▶ Analyze batch</button><button class="btn" id="sample">Load quick sample</button><button class="btn" id="clear">Clear input</button><label class="btn" for="fileInput" style="display:inline-flex;align-items:center;margin:0">↑ Import JSON</label><input type="file" id="fileInput" accept=".json,application/json" hidden></div>
+      <div class="status" id="message" role="status" aria-live="polite"><span class="statusdot"></span><span>No analysis submitted yet. Load a sample or import a JSON file to begin local analysis.</span></div>
+    </div></div>
+    <div class="panel" id="architecture"><div class="panelhead"><div><div class="paneltitle">Cloud processing pipeline</div><div class="panelsub">Serverless architecture for this project</div></div><span class="mini-tag">AWS</span></div><div class="ruleshint">
+      <div class="ruleline"><strong>01 · Web console</strong><span>Amazon S3 static website</span></div><div class="ruleline"><strong>02 · API layer</strong><span>Amazon API Gateway · HTTPS</span></div><div class="ruleline"><strong>03 · Detection engine</strong><span>AWS Lambda · Python</span></div><div class="ruleline"><strong>04 · Finding storage</strong><span>Amazon DynamoDB</span></div><div class="ruleline"><strong>05 · Observability</strong><span>Amazon CloudWatch logs</span></div><div class="privacy"><span>✓</span><span><strong>Privacy note:</strong> Use synthetic demo data only. Findings are indicators for investigation, not proof of malicious activity.</span></div>
+    </div></div>
+  </section>
+  <section class="panel results" id="findings"><div class="panelhead"><div><div class="paneltitle">Finding review queue</div><div class="panelsub">Results from the most recent local demo analysis</div></div><div class="resulttools"><span class="count" id="resultCount">0 findings</span><button class="btn" id="exportCsv">↓ Export CSV</button></div></div><div class="tablewrap"><table><thead><tr><th>Severity</th><th>Source IP</th><th>Finding description</th><th>Failed attempts</th><th>Rule ID</th><th>Created at</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="empty">Run an analysis to populate the finding review queue.</td></tr></tbody></table></div></section>
+  <footer class="footer" id="footer"><span><strong>CyberShield</strong> · Academic cloud security analytics prototype</span><span>Rule-based detection · Synthetic data · Not a production SIEM</span></footer>
+</div></main></div>
+<script>
+const sample=[
+ {timestamp:"2026-10-24T10:00:01Z",ip:"203.0.113.10",event:"login_success"},
+ {timestamp:"2026-10-24T10:00:04Z",ip:"198.51.100.20",event:"login_failed"},
+ {timestamp:"2026-10-24T10:00:06Z",ip:"198.51.100.20",event:"login_failed"},
+ {timestamp:"2026-10-24T10:00:08Z",ip:"198.51.100.20",event:"login_failed"},
+ {timestamp:"2026-10-24T10:00:10Z",ip:"198.51.100.20",event:"login_failed"},
+ {timestamp:"2026-10-24T10:00:12Z",ip:"198.51.100.20",event:"login_failed"},
+ {timestamp:"2026-10-24T10:00:13Z",ip:"198.51.100.20",event:"login_success"},
+ {timestamp:"2026-10-24T10:01:00Z",ip:"192.0.2.45",event:"login_failed"},
+ {timestamp:"2026-10-24T10:01:03Z",ip:"192.0.2.45",event:"login_failed"}
+];
+const $=id=>document.getElementById(id);let latestFindings=[];let latestEvents=[];
+
+function setMessage(text,type=''){const box=$('message');box.className='status'+(type?' '+type:'');box.replaceChildren();const dot=document.createElement('span');dot.className='statusdot';const body=document.createElement('span');body.textContent=text;box.append(dot,body)}
+function loadSample(){ $('logs').value=JSON.stringify(sample,null,2);setMessage('Quick sample loaded. Includes ordinary activity and a small suspicious pattern. No request has been sent.'); }
+$('sample').onclick=loadSample;$('loadDemoTop').onclick=()=>{$('analysis').scrollIntoView({behavior:'smooth'});loadSample()};
+$('clear').onclick=()=>{$('logs').value='';setMessage('Input cleared. No request was sent.');};
+$('resetView').onclick=()=>{ $('total').textContent='—';$('suspicious').textContent='—';$('high').textContent='—';$('ips').textContent='—';$('activityTag').textContent='Waiting for data';latestFindings=[];latestEvents=[];$('resultCount').textContent='0 findings';$('rows').innerHTML='<tr><td colspan="6" class="empty">Run an analysis to populate the finding review queue.</td></tr>';drawChart([],[]);setMessage('View reset. Your API endpoint has been retained.');};
+$('fileInput').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const txt=await f.text();const parsed=JSON.parse(txt);if(!Array.isArray(parsed))throw Error('The JSON file must contain an array of events.');$('logs').value=JSON.stringify(parsed,null,2);setMessage(`Imported ${parsed.length} events from ${f.name}. Review the data, then analyze the batch.`);}catch(err){setMessage('Could not import JSON: '+err.message,'error');}finally{e.target.value='';}});
+
+$('analyze').onclick=()=>{
+ let events;
+ try {
+   events=JSON.parse($('logs').value);
+   if(!Array.isArray(events)) throw Error('Input must be a JSON array.');
+   if(events.length===0) throw Error('Add at least one event before analysis.');
+   for(const e of events) {
+     if(!e || typeof e!=='object' || !e.ip || !e.event)
+       throw Error('Each event must contain at least ip and event fields.');
+   }
+ } catch(e) {
+   setMessage('Invalid input: '+e.message,'error');
+   return;
+ }
+
+ const byIp={};
+ for(const e of events) {
+   const ip=String(e.ip);
+   if(!byIp[ip]) byIp[ip]={failed:0,successAfterFailures:false,firstFailure:null};
+   const item=byIp[ip];
+   const kind=String(e.event).toLowerCase();
+   if(kind==='login_failed') {
+     item.failed++;
+     if(!item.firstFailure) item.firstFailure=e.timestamp||new Date().toISOString();
+   } else if(kind==='login_success' && item.failed>=3) {
+     item.successAfterFailures=true;
+   }
+ }
+
+ const findings=[];
+ for(const [ip,item] of Object.entries(byIp)) {
+   if(item.failed>=5) findings.push({
+     severity:'HIGH', ip,
+     description:'Repeated failed login attempts from one IP',
+     failed_attempts:item.failed,
+     rule:'AUTH-001',
+     created_at:item.firstFailure||new Date().toISOString()
+   });
+   if(item.failed>=3 && item.successAfterFailures) findings.push({
+     severity:'MEDIUM', ip,
+     description:'Successful login observed after repeated failures',
+     failed_attempts:item.failed,
+     rule:'AUTH-002',
+     created_at:new Date().toISOString()
+   });
+ }
+
+ render({events_analyzed:events.length,findings},events);
+ setMessage(
+   `Local demo analysis completed. ${events.length} events analyzed; ${findings.length} findings generated in your browser. No AWS request was made.`,
+   'ok'
+ );
+};
+
+function render(d,events){const findings=Array.isArray(d.findings)?d.findings:[];latestFindings=findings;latestEvents=events;$('total').textContent=d.events_analyzed??events.length;$('suspicious').textContent=findings.length;$('high').textContent=findings.filter(x=>x.severity==='HIGH').length;$('ips').textContent=new Set(events.map(x=>x.ip).filter(Boolean)).size;$('activityTag').textContent='Latest batch';$('resultCount').textContent=findings.length+' finding'+(findings.length===1?'':'s');
+ const rows=$('rows');rows.replaceChildren();if(!findings.length){rows.innerHTML='<tr><td colspan="6" class="empty">No findings matched the configured rules for this batch.</td></tr>';}else{for(const f of findings){const tr=document.createElement('tr');const sev=document.createElement('td'),badge=document.createElement('span');badge.className='badge '+String(f.severity||'LOW');badge.textContent=f.severity||'UNKNOWN';sev.append(badge);tr.append(sev);[f.ip,f.description,f.failed_attempts,f.rule,formatDate(f.created_at)].forEach(v=>{const td=document.createElement('td');td.textContent=v??'—';tr.append(td)});rows.append(tr);}}
+ const successes=events.filter(e=>String(e.event||'').toLowerCase()==='login_success').length;const failures=events.filter(e=>String(e.event||'').toLowerCase()==='login_failed').length;drawChart([successes,failures],['Successful logins','Failed logins']);}
+function formatDate(value){if(!value)return '—';const d=new Date(value);return Number.isNaN(d.getTime())?String(value):d.toLocaleString();}
+function drawChart(values=[],labels=[]){const canvas=$('activityChart'),ctx=canvas.getContext('2d');const rect=canvas.getBoundingClientRect();const w=Math.max(280,rect.width),h=160,scale=window.devicePixelRatio||1;canvas.width=w*scale;canvas.height=h*scale;ctx.scale(scale,scale);ctx.clearRect(0,0,w,h);const pad={l:25,r:12,t:8,b:26},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;ctx.font='10px system-ui';ctx.textBaseline='middle';const max=Math.max(5,...values);for(let i=0;i<=4;i++){const y=pad.t+ch*i/4;ctx.strokeStyle='#23344b';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.fillStyle='#6f85a1';ctx.fillText(Math.round(max*(1-i/4)),1,y);}const colors=['#54e0e7','#ff7084'];const barW=Math.min(78,cw/5);const gap=cw/3;values.forEach((v,i)=>{const x=pad.l+gap*(i+.55)-barW/2;const bh=(v/max)*ch;const y=pad.t+ch-bh;ctx.fillStyle=colors[i];roundRect(ctx,x,y,barW,Math.max(2,bh),6);ctx.fill();ctx.fillStyle='#d8e5f5';ctx.textAlign='center';ctx.fillText(String(v),x+barW/2,Math.max(8,y-9));ctx.fillStyle='#90a5bf';ctx.fillText(labels[i]||'',x+barW/2,h-10);});ctx.textAlign='left';if(!values.length){ctx.fillStyle='#6f85a1';ctx.textAlign='center';ctx.fillText('Analyze a batch to visualize activity',w/2,h/2);ctx.textAlign='left';}}
+function roundRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();}
+$('exportCsv').onclick=()=>{if(!latestFindings.length){setMessage('There are no findings to export yet. Run an analysis first.');return;}const headers=['severity','ip','description','failed_attempts','rule','created_at'];const escape=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv=[headers.join(','),...latestFindings.map(f=>headers.map(k=>escape(f[k])).join(','))].join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cybershield-findings.csv';a.click();URL.revokeObjectURL(url);};
+window.addEventListener('resize',()=>drawChart(latestEvents.length?[latestEvents.filter(e=>e.event==='login_success').length,latestEvents.filter(e=>e.event==='login_failed').length]:[],['Successful logins','Failed logins']));drawChart([],[]);
+</script>
+</body></html>

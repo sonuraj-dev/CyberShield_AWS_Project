@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# Legacy dashboards: keep local, do not publish
+/index_aws_backup.html
+/indexold.html
